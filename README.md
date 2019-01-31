@@ -54,10 +54,32 @@ mkdir logs
 
 1. `bash scripts/run_jobs.01.TANmask.01.OVL`
    * **Parallelizable:** task_mem="10G", task_cores="8"
-2. `bash scripts/run_jobs.01.TANmask.02.SORT` | **Parallelizable:** task_mem="10G", task_cores="1"
-3. `bash scripts/run_jobs.01.TANmask.03.CHECK.OPT` | **Optional Checkppint**
+2. `bash scripts/run_jobs.01.TANmask.02.SORT`
+   * **Parallelizable:** task_mem="10G", task_cores="1"
+3. `bash scripts/run_jobs.01.TANmask.03.CHECK.OPT`
+   * **Optional Checkpoint**
 4. `bash scripts/run_jobs.01.TANmask.04.RM`
-5. 
+5. `bash scripts/run_jobs.01.TANmask.05.MASK`
+   * **Parallelizable:** task_mem="10G", task_cores="8"
+6. `Catrack -v raw_reads.db tan`
+7. `bash scripts/run_jobs.01.TANmask.06.RM`
+
+### 1.3 REPmask
+1. `bash scripts/run_jobs.02.REPmask.01.OVL`
+   * **Parallelizable:** task_mem="35G", task_cores="8"
+1. `bash scripts/run_jobs.02.REPmask.02.SORT
+   * **Parallelizable:** task_mem="10G", task_cores="1"
+1. `bash scripts/bash scripts/run_jobs.02.REPmask.03.CHECK.OPT
+1. `bash scripts/run_jobs.02.REPmask.04.RM
+1. `bash scripts/run_jobs.02.REPmask.05.MERGE
+   * **Parallelizable:** task_mem="15G", task_cores="1"
+1. `bash scripts/run_jobs.02.REPmask.06.CHECK.OPT
+1. `bash scripts/run_jobs.02.REPmask.07.RM
+1. `bash scripts/run_jobs.02.REPmask.08.MASK
+   * **Parallelizable:** task_mem="15G", task_cores="8"
+1. `Catrack -v raw_reads.db rep2
+1. `bash scripts/run_jobs.02.REPmask.09.RM`
+
 
 
 
