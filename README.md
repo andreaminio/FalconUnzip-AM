@@ -51,9 +51,10 @@ mkdir logs
 ```
 
 ### 1.2 Run TANmasker
-1. TANmask.01.OVL
-  * ```bash
-scripts/run_jobs.01.TANmask.01.OVL```
+#### TANmask.01.OVL
+```bash 
+scripts/run_jobs.01.TANmask.01.OVL 
+```
   * **Parallelizable:** task_mem="10G", task_cores="8"
 
 
