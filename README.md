@@ -53,7 +53,11 @@ mkdir logs
 ### 1.2 Run TANmasker
 
 1. `bash scripts/run_jobs.01.TANmask.01.OVL` | **Parallelizable:** task_mem="10G", task_cores="8"
-2. 
+  * try
+2. `bash scripts/run_jobs.01.TANmask.02.SORT` | **Parallelizable:** task_mem="10G", task_cores="1"
+3. `bash scripts/run_jobs.01.TANmask.03.CHECK.OPT` | **Optional Checkppint**
+4. `bash scripts/run_jobs.01.TANmask.04.RM`
+5. 
 
 
 
