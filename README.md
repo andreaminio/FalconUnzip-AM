@@ -182,13 +182,74 @@ touch ../0-rawreads/rdb_build_done
 
 ## 3 - Assembly
 ### 3.1 - Falcon
-  * **Note**: Falcon must be run starting from the corrected reads. In General tab set:
+1. Falcon must be run starting from the corrected reads. In General tab set:
 ```
 input_fofn = 0-rawreads/input_preads.fofn
 input_type = preads
 ```
-  * **Note**: Add `-mtan -mrep2` tags to DAligner options to use repeats marking information
-
+1. Add `-mtan -mrep2` tags to DAligner options to use repeats marking information
+2. Run Falcon
 ```bash
 $PYTHONUSERBASE/bin/fc_run.py fc_run.cfg
 ```
+> **Note:** An example of configuration file to run Falcon in a SLURM environment with properly set configuration parameters is available in the repository as [fc_run.masked.cfg](fc_run.masked.cfg)
+
+
+### 3.2 - Unzip
+1. Extract reads mapping on the p_ctg contigs
+```bash
+mkdir -p 3-unzip/reads
+python -m falcon_kit.mains.get_read_ctg_map
+python -m falcon_kit.mains.rr_ctg_track
+python -m falcon_kit.mains.pr_ctg_track
+cd 3-unzip/reads
+mkdir split
+cd split
+awk 'BEGIN {n_seq=0;count=0} /^>/ {if(n_seq%5000==0){file=sprintf("%010d.fa",count);count++} print >> file; n_seq++; next;} { print >> file; }' raw.fasta
+basedir=$(realpath ../../../)
+for file in $(find ./ -name "*.fa" | sort) ; do name=$(basename $file .fa); mkdir -p $name; realpath $file > ${name}/input.fofn ; echo "python ~/Assembly_tools/Tools/falcon-2017.06.28-18.01/lib/python2.7/site-packages/falcon_kit/mains/fetch_reads.mod.py --base_dir $basedir --fofn ${name}/input.fofn --out_dir ${name}/ --min_ctg_lenth 2000" ; done > fetch.sh
+```
+1. Retrieve mapping reads `bash scripts/fetch.sh`
+   * **Parallelizable:** task_mem="2G", task_cores="1"
+1. Extract the contig list
+```
+find ./ -name "ctg_list" -exec cat {} \; | sort -u > ../ctg_list
+cd ..
+```
+1. Create reference fasta files `python /path/to/fetch_reads.ref_only.py --base_dir $(realpath ../../) --fofn ../../input.fofn --out_dir $(pwd) --min_ctg_lenth 2000
+   * Use [fetch_reads.ref_only.py](fetch_reads.ref_only.py) script to extract only the reference sequences. The script is a modified version of `fetch_reads.py` FalconUnzip script preventing the read binning.  
+    
+1. Merge the fetching output
+```bash 
+for name in $(cat ctg_list); do echo $name; find split/ -name ${name}_reads.fa -exec cat {} \; > ${name}_reads.fa ; done;
+cat split/*/unassigned_reads.fa > unassigned_reads.fa
+```
+
+1. Create end of pipeline control files
+```
+touch track_reads_done.exit
+touch track_reads_done
+touch run.sh.done
+```
+1. Add auxiliary files 
+   * Edit the path to the falcon directories (`/path/to/falcon-verXX/bin`)]
+   * Edit the path to assembly folders (`/full/path/to`) to point ot the actual diercories
+   * Files to add (templates can be found in this repository):
+     * [track_reads.sh](track_reads.sh)
+     * [run.sh](run.sh)
+     * [task.sh](task.sh)
+     * [task.sh](task.json)
+1. Run Unzip
+```bash
+fc_unzip.py fc_unzip.cfg
+```
+   * Example of configuration file [fc_unzip.cfg](fc_unzip.cfg) 
+
+
+
+
+
+
+## References
+
+<a name="parallel">1</a>: Tange (2011): GNU Parallel - The Command-Line Power Tool, ;login: The USENIX Magazine, February 2011:42-47.
