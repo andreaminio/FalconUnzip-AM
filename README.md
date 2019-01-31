@@ -55,7 +55,7 @@ cd ..
    * **Parallelizable:** task_mem="10G", task_cores="8"
 2. `bash scripts/run_jobs.01.TANmask.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.01.TANmask.03.CHECK.OPT`
+1. *[Optional Checkpoint]* `bash scripts/run_jobs.01.TANmask.03.CHECK.OPT`
 4. `bash scripts/run_jobs.01.TANmask.04.RM`
 5. `bash scripts/run_jobs.01.TANmask.05.MASK`
    * **Parallelizable:** task_mem="10G", task_cores="8"
@@ -69,11 +69,11 @@ cd ..
    * **Parallelizable:** task_mem="35G", task_cores="8"
 1. `bash scripts/run_jobs.02.REPmask.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/bash scripts/run_jobs.02.REPmask.03.CHECK.OPT
+1. *[Optional Checkpoint]* `bash scripts/bash scripts/run_jobs.02.REPmask.03.CHECK.OPT
 1. `bash scripts/run_jobs.02.REPmask.04.RM`
 1. `bash scripts/run_jobs.02.REPmask.05.MERGE`
    * **Parallelizable:** task_mem="15G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.02.REPmask.06.CHECK.OPT`
+1. *[Optional Checkpoint]* `bash scripts/run_jobs.02.REPmask.06.CHECK.OPT`
 1. `bash scripts/run_jobs.02.REPmask.07.RM`
 1. `bash scripts/run_jobs.02.REPmask.08.MASK`
    * **Parallelizable:** task_mem="15G", task_cores="8"
@@ -88,13 +88,13 @@ cd ..
    * **Parallelizable:** task_mem="35G", task_cores="8"
 1. `bash scripts/run_jobs.03.Daligner.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.03.Daligner.03.CHECK.OPT`
+1. *[Optional Checkpoint]* `bash scripts/run_jobs.03.Daligner.03.CHECK.OPT`
 1. `bash scripts/run_jobs.03.Daligner.04.RM`
-1. (OPTIONAL) Split merging processes if the 250< # Chunks ($LB) <= 500
+1. ***[OPTIONAL]*** Split merging processes if the 250< # Chunks ($LB) <= 500
    * `sed -i 's:\(.*raw_reads\.\)\([0-9]*\) \(.*\)250 \(.*\):\1\2\.1 \3250; \1\2\.2 \4; \1\2 raw_reads\.\2\.1 raw_reads\.\2\.2:;s: L[0-9]*.[0-9]*.;:;:' scripts/run_jobs.03.Daligner.05.MERGE `
 1. `bash scripts/run_jobs.03.Daligner.05.MERGE`
    * **Parallelizable:** task_mem="15G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.03.Daligner.06.CHECK.OPT`
+1. *[Optional Checkpoint]* `bash scripts/run_jobs.03.Daligner.06.CHECK.OPT`
 1. `bash scripts/run_jobs.03.Daligner.07.RM.OPT`
 
 
@@ -136,7 +136,7 @@ cd ..
    * **Parallelizable:** task_mem="16G", task_cores="8"
 1. `bash scripts/run_jobs.06.TANmask_corr.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.06.TANmask_corr.03.CHECK.OPT`
+1. *[Optional Checkpoint]* `bash scripts/run_jobs.06.TANmask_corr.03.CHECK.OPT`
 1. `bash scripts/run_jobs.06.TANmask_corr.04.RM`
 1. `bash scripts/run_jobs.06.TANmask_corr.05.MASK`
    * **Parallelizable:** task_mem="10G", task_cores="8"
@@ -151,11 +151,11 @@ cd ..
    * **Parallelizable:** task_mem="35G", task_cores="8"
 1. `bash scripts/run_jobs.07.REPmask_corr.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.07.REPmask_corr.03.CHECK.OPT`
+1. *[Optional Checkpoint]* `bash scripts/run_jobs.07.REPmask_corr.03.CHECK.OPT`
 1. `bash scripts/run_jobs.07.REPmask_corr.04.RM`
 1. `bash scripts/run_jobs.07.REPmask_corr.05.MERGE`
    * **Parallelizable:** task_mem="15G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.07.REPmask_corr.06.CHECK.OPT`
+1. *[Optional Checkpoint]* `bash scripts/run_jobs.07.REPmask_corr.06.CHECK.OPT`
 1. `bash scripts/run_jobs.07.REPmask_corr.07.RM`
 1. `bash scripts/run_jobs.07.REPmask_corr.08.MASK`
    * **Parallelizable:** task_mem="15G", task_cores="8"
