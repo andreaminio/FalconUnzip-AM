@@ -104,7 +104,7 @@ cd ..
    * **Parallelizable:** task_mem="35G", task_cores="8"
 
 
-## 2.
+## 2. Mark repeats in corrected reads
 ### 2.1 - Create new database for corrected reads
 ```bash
 ls -1 $(pwd)/cns_*.fasta > input_preads.fofn
@@ -238,7 +238,7 @@ touch run.sh.done
      * [track_reads.sh](track_reads.sh)
      * [run.sh](run.sh)
      * [task.sh](task.sh)
-     * [task.sh](task.json)
+     * [task.json](task.json)
 1. Run Unzip
 ```bash
 fc_unzip.py fc_unzip.cfg
