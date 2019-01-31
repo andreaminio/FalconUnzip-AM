@@ -51,11 +51,14 @@ mkdir logs
 ```
 
 ### 1.2 Run TANmasker
-1. 'scripts/run_jobs.01.TANmask.01.OVL' \\ > Parallelizable: task_mem="10G", task_cores="8"
+1. `scripts/run_jobs.01.TANmask.01.OVL` 
+  * **Parallelizable:** task_mem="10G", task_cores="8"
 
 
 
 
 
+
+## References
 
 <a name="parallel">1</a>: Tange (2011): GNU Parallel - The Command-Line Power Tool, ;login: The USENIX Magazine, February 2011:42-47.
