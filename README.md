@@ -70,10 +70,12 @@ mkdir logs
 1. `bash scripts/run_jobs.02.REPmask.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
 1. `bash scripts/bash scripts/run_jobs.02.REPmask.03.CHECK.OPT
+   * **Optional Checkpoint**
 1. `bash scripts/run_jobs.02.REPmask.04.RM`
 1. `bash scripts/run_jobs.02.REPmask.05.MERGE`
    * **Parallelizable:** task_mem="15G", task_cores="1"
 1. `bash scripts/run_jobs.02.REPmask.06.CHECK.OPT`
+   * **Optional Checkpoint**
 1. `bash scripts/run_jobs.02.REPmask.07.RM`
 1. `bash scripts/run_jobs.02.REPmask.08.MASK`
    * **Parallelizable:** task_mem="15G", task_cores="8"
