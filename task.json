@@ -1,0 +1,26 @@
+{
+    "inputs": {
+        "falcon_asm_done": "/full/path/to/2-asm-falcon/falcon_asm_done"
+    },
+    "outputs": {
+        "ctg_list_file": "ctg_list",
+        "job_done": "track_reads_done"
+    },
+    "parameters": {
+        "config": {
+            "job_queue": "default",
+            "job_type": "local",
+            "pwatcher_type": "fs_based",
+            "sge_blasr_aln": "-N 1 -c 2 -t 250:00:00 --mem=10G",
+            "sge_hasm": "-N 1 -c 2 -t 250:00:00 --mem=10G",
+            "sge_phasing": "-N 1 -c 2 -t 250:00:00 --mem=10G",
+            "sge_track_reads": "-N 1 -c 2 -t 250:00:00 --mem=10G",
+            "smrt_bin": "/path/to/falcon-2017.06.28-18.01/bin",
+            "unzip_blasr_concurrent_jobs": 8,
+            "unzip_phasing_concurrent_jobs": 8
+        },
+        "sge_option": "-N 1 -c 2 -t 250:00:00 --mem=10G",
+        "wd": "/full/path/to/3-unzip/reads"
+    },
+    "python_function": "falcon_unzip.unzip.task_track_reads"
+}
