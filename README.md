@@ -84,18 +84,18 @@ cd ..
 
 ### 1.4 - Daligner
 1. `bash scripts/run_jobs.03.Daligner.00.MKDIR`
-1. `bash scripts/run_jobs.03.Daligner.01.OVL
+1. `bash scripts/run_jobs.03.Daligner.01.OVL`
    * **Parallelizable:** task_mem="35G", task_cores="8"
-1. `bash scripts/run_jobs.03.Daligner.02.SORT
+1. `bash scripts/run_jobs.03.Daligner.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.03.Daligner.03.CHECK.OPT
-1. `bash scripts/run_jobs.03.Daligner.04.RM
+1. [Optional Checkpoint] `bash scripts/run_jobs.03.Daligner.03.CHECK.OPT`
+1. `bash scripts/run_jobs.03.Daligner.04.RM`
 1. (OPTIONAL) Split merging processes if the 250< # Chunks ($LB) <= 500
    * `sed -i 's:\(.*raw_reads\.\)\([0-9]*\) \(.*\)250 \(.*\):\1\2\.1 \3250; \1\2\.2 \4; \1\2 raw_reads\.\2\.1 raw_reads\.\2\.2:;s: L[0-9]*.[0-9]*.;:;:' scripts/run_jobs.03.Daligner.05.MERGE `
-1. `bash scripts/run_jobs.03.Daligner.05.MERGE"
+1. `bash scripts/run_jobs.03.Daligner.05.MERGE`
    * **Parallelizable:** task_mem="15G", task_cores="1"
-1. [Optional Checkpoint] `bash scripts/run_jobs.03.Daligner.06.CHECK.OPT
-1. `bash scripts/run_jobs.03.Daligner.07.RM.OPT
+1. [Optional Checkpoint] `bash scripts/run_jobs.03.Daligner.06.CHECK.OPT`
+1. `bash scripts/run_jobs.03.Daligner.07.RM.OPT`
 
 
 
@@ -132,7 +132,7 @@ cd ..
 
 
 ### 2.3 - TANmask
-1. `bash scripts/run_jobs.06.TANmask_corr.01.OVL
+1. `bash scripts/run_jobs.06.TANmask_corr.01.OVL`
    * **Parallelizable:** task_mem="16G", task_cores="8"
 1. `bash scripts/run_jobs.06.TANmask_corr.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
@@ -140,7 +140,7 @@ cd ..
 1. `bash scripts/run_jobs.06.TANmask_corr.04.RM`
 1. `bash scripts/run_jobs.06.TANmask_corr.05.MASK`
    * **Parallelizable:** task_mem="10G", task_cores="8"
-1. `Catrack -v preads.db tan
+1. `Catrack -v preads.db tan`
 1. `bash scripts/run_jobs.06.TANmask_corr.06.RM`
 
 
