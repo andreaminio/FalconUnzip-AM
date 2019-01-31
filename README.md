@@ -3,6 +3,8 @@ FALCON Unzip based pipeline integrating DAmasker and boosting Unzip speed
 
 To perform the pipeline, along with a complete FalconUnzip installation, that we assume is placed in `/path/to/falcon-verXX` , a proper smrtlink distribution (we assume installed ) is also necessary according to the sequencing chemistry used.
 
+> **Note:** The tool best performs on a cluster, where single processes of the different steps may be run in parallel. Nevertheless, a single machine can run multiple process using [parallel](https://www.gnu.org/software/parallel/parallel_tutorial.html)<sup>[1](#parallel)</sup>. Such processe that di benefit from this will be marked and approximate RAM and core usage will be given for a single process. 
+
 ## 0 - Environment Setup
 ### 0.1 - Environmental variables  
 Remeber to set the paths to Falcon libararies and environments
@@ -29,7 +31,7 @@ DBsplit -x500 -s100 raw_reads
 LB=$(cat raw_reads.db | LD_LIBRARY_PATH= awk '$1 == "blocks" {print $3}')
 echo $LB
 ```
-> **Note:** As DAmasker merging accepts 250 chunks or less, tune `-s` parameter in order to have a $LB <= 500 as this pipeline is thought for a maximum of 2x250 batches.
+> **Note:** As Daligner merging accepts 250 chunks or less, tune `-s` parameter in order to have a $LB <= 500 as this pipeline is thought for a maximum of 2x250 batches.
 
 
 #### Create scripts
@@ -47,3 +49,13 @@ for block_id in $(seq 1 $LB); do echo "LA4Falcon -H$CUTOFF -fso raw_reads.db raw
 cd ..
 mkdir logs
 ```
+
+### 1.2 Run TANmasker
+1. 'scripts/run_jobs.01.TANmask.01.OVL' \\ > Parallelizable: task_mem="10G", task_cores="8"
+
+
+
+
+
+
+<a name="parallel">1</a>: Tange (2011): GNU Parallel - The Command-Line Power Tool, ;login: The USENIX Magazine, February 2011:42-47.
