@@ -15,7 +15,7 @@
             "sge_hasm": "-N 1 -c 2 -t 250:00:00 --mem=10G",
             "sge_phasing": "-N 1 -c 2 -t 250:00:00 --mem=10G",
             "sge_track_reads": "-N 1 -c 2 -t 250:00:00 --mem=10G",
-            "smrt_bin": "/path/to/falcon-2017.06.28-18.01/bin",
+            "smrt_bin": "/path/to/falcon-verXX/bin",
             "unzip_blasr_concurrent_jobs": 8,
             "unzip_phasing_concurrent_jobs": 8
         },
