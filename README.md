@@ -8,7 +8,7 @@ To perform the pipeline, along with a complete FalconUnzip installation, that we
 ## 0 - Environment Setup
 ### 0.1 - Environmental variables  
 Remeber to set the paths to Falcon libararies and environments
-```bash
+```
 export PYTHONUSERBASE=/path/to/falcon-verXX/
 export LD_LIBRARY_PATH=/path/to/falcon-verXX/lib:${LD_LIBRARY_PATH}
 export PATH=/path/to/smrtlink/install/smrtlink-release_X.XX/bundles/smrttools/install/smrttools-release_X.XX/smrtcmds/bin/:/path/to/falcon-verXX/bin:${PATH}
@@ -16,14 +16,14 @@ export PATH=/path/to/smrtlink/install/smrtlink-release_X.XX/bundles/smrttools/in
 
 ### 0.2 - BAX.H5 file conversion to BAM
 This step is necessary for Arrow polishing as Blasr mapping files with other input file formats will not be accepted
-```bash
+```
 for name in $(find -name "*bax.h5" | sed 's:\..\.bax\.h5$::' | sort -u | less -S); do echo $name ; bax2bam $name.1.bax.h5 $name.2.bax.h5 $name.3.bax.h5; done
 ```
 
 ## 1 - Raw reads repeat marking
 ### 1.1 - Scripts and Folders Preparation
 #### Damasker DB creation
-```bash
+```
 mkdir 0-rawreads
 cd 0-rawreads
 fasta2DB -v raw_reads $reads
@@ -35,7 +35,7 @@ echo $LB
 
 
 #### Create scripts
-```bash 
+```bash
 CUTOFF=3000
 echo -n $CUTOFF > length_cutoff
  
@@ -51,11 +51,9 @@ mkdir logs
 ```
 
 ### 1.2 Run TANmasker
-#### TANmask.01.OVL
-```bash 
-bash scripts/run_jobs.01.TANmask.01.OVL 
-```
-> **Parallelizable:** task_mem="10G", task_cores="8"
+
+1. `bash scripts/run_jobs.01.TANmask.01.OVL` | **Parallelizable:** task_mem="10G", task_cores="8"
+2. 
 
 
 
