@@ -67,15 +67,15 @@ mkdir logs
 ### 1.3 REPmask
 1. `bash scripts/run_jobs.02.REPmask.01.OVL`
    * **Parallelizable:** task_mem="35G", task_cores="8"
-1. `bash scripts/run_jobs.02.REPmask.02.SORT
+1. `bash scripts/run_jobs.02.REPmask.02.SORT`
    * **Parallelizable:** task_mem="10G", task_cores="1"
 1. `bash scripts/bash scripts/run_jobs.02.REPmask.03.CHECK.OPT
-1. `bash scripts/run_jobs.02.REPmask.04.RM
-1. `bash scripts/run_jobs.02.REPmask.05.MERGE
+1. `bash scripts/run_jobs.02.REPmask.04.RM`
+1. `bash scripts/run_jobs.02.REPmask.05.MERGE`
    * **Parallelizable:** task_mem="15G", task_cores="1"
-1. `bash scripts/run_jobs.02.REPmask.06.CHECK.OPT
-1. `bash scripts/run_jobs.02.REPmask.07.RM
-1. `bash scripts/run_jobs.02.REPmask.08.MASK
+1. `bash scripts/run_jobs.02.REPmask.06.CHECK.OPT`
+1. `bash scripts/run_jobs.02.REPmask.07.RM`
+1. `bash scripts/run_jobs.02.REPmask.08.MASK`
    * **Parallelizable:** task_mem="15G", task_cores="8"
 1. `Catrack -v raw_reads.db rep2
 1. `bash scripts/run_jobs.02.REPmask.09.RM`
