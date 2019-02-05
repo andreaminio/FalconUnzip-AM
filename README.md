@@ -207,7 +207,7 @@ mkdir split
 cd split
 awk 'BEGIN {n_seq=0;count=0} /^>/ {if(n_seq%5000==0){file=sprintf("%010d.fa",count);count++} print >> file; n_seq++; next;} { print >> file; }' raw.fasta
 basedir=$(realpath ../../../)
-for file in $(find ./ -name "*.fa" | sort) ; do name=$(basename $file .fa); mkdir -p $name; realpath $file > ${name}/input.fofn ; echo "python ~/Assembly_tools/Tools/falcon-2017.06.28-18.01/lib/python2.7/site-packages/falcon_kit/mains/fetch_reads.mod.py --base_dir $basedir --fofn ${name}/input.fofn --out_dir ${name}/ --min_ctg_lenth 2000" ; done > fetch.sh
+for file in $(find ./ -name "*.fa" | sort) ; do name=$(basename $file .fa); mkdir -p $name; realpath $file > ${name}/input.fofn ; echo "python /path/to/falcon-verXX/lib/python2.7/site-packages/falcon_kit/mains/fetch_reads.mod.py --base_dir $basedir --fofn ${name}/input.fofn --out_dir ${name}/ --min_ctg_lenth 2000" ; done > fetch.sh
 ```
 1. Retrieve mapping reads `bash scripts/fetch.sh`
    * **Parallelizable:** task_mem="2G", task_cores="1"
