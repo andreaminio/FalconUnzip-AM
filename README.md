@@ -23,7 +23,7 @@ for name in $(find -name "*bax.h5" | sed 's:\..\.bax\.h5$::' | sort -u | less -S
 ## 1 - Raw reads repeat marking
 ### 1.1 - Scripts and Folders Preparation
 #### Damasker DB creation
-```
+```bash
 mkdir 0-rawreads
 cd 0-rawreads
 fasta2DB -v raw_reads $reads
